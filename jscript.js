@@ -33,9 +33,9 @@ function displayBooks() {
         const cardPages = document.createElement('p');
         const cardRead = document.createElement('p');
         cardTitle.className = 'titlefield';
-        cardAuthor.classname = 'authorfield';
-        cardPages.classname = 'pagesfield';
-        cardRead.classname = 'readfield';
+        cardAuthor.className = 'authorfield';
+        cardPages.className = 'pagesfield';
+        cardRead.className = 'readfield' + i;
         card.appendChild(cardTitle);
         card.appendChild(cardAuthor);
         card.appendChild(cardPages);
@@ -47,50 +47,34 @@ function displayBooks() {
         const removeButton = document.createElement('button');
         removeButton.className = 'removeBtn' + i;
         removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', () => {
+            removeBook(i);
+        });
         card.appendChild(removeButton);
         const toggleBtn = document.createElement('button');
         toggleBtn.className = 'toggleBtn' + i;
         toggleBtn.textContent = 'Read/Unread';
+        toggleBtn.addEventListener('click', () => {
+            toggleRead(i);
+        })
         card.appendChild(toggleBtn);
         containerDiv.appendChild(card);
     }
-    addListeners()
+    // containerDiv.addEventListener ('click', function(e) {
+    //     if (e.target)
+    // }
 };
 
-function addListeners() {
-    for (i = 0; i < myLibrary.length; ++i) {
-        const rmvBtn = document.querySelector('.removeBtn' + i);
-        rmvBtn.addEventListener('click', console.log('heyo'));
-    };
-    for (i = 0; i < myLibrary.length; ++i) {
-        const togBtn = document.querySelector('.toggleBtn' + i);
-        togBtn.addEventListener('click', toggleRead(i));
-    };
-};
-
-function addBook() {
-    let i = myLibrary.length - 1;
-    const card = document.createElement('div');
-    card.id = 'cardid' + i;
-    const cardTitle = document.createElement('p');
-    const cardAuthor = document.createElement('p');
-    const cardPages = document.createElement('p');
-    const cardRead = document.createElement('p');
-    cardTitle.className = 'titlefield';
-    cardAuthor.classname = 'authorfield';
-    cardPages.classname = 'pagesfield';
-    cardRead.classname = 'readfield';
-    card.appendChild(cardTitle);
-    card.appendChild(cardAuthor);
-    card.appendChild(cardPages);
-    card.appendChild(cardRead);
-    cardTitle.textContent = myLibrary[i].title;
-    cardAuthor.textContent = myLibrary[i].author;
-    cardPages.textContent = myLibrary[i].pages;
-    cardRead.textContent = hasRead(myLibrary[i].read);
-    containerDiv.appendChild(card);
-    
-};
+// function addListeners() {
+//     for (i = 0; i < myLibrary.length; ++i) {
+//         const rmvBtn = document.querySelector('.removeBtn' + i);
+//         rmvBtn.addEventListener('click', console.log('heyo'));
+//     };
+//     for (i = 0; i < myLibrary.length; ++i) {
+//         const togBtn = document.querySelector('.toggleBtn' + i);
+//         togBtn.addEventListener('click', toggleRead(i));
+//     };
+// };
 
 function removeBook(indexNum) {
     let x = indexNum;
@@ -106,8 +90,47 @@ function removeAllBooks () {
     }
 }
 
+function toggleRead(indexNum) {
+    let x = indexNum;
+    const readStatus = document.querySelector('.readfield' + x);
+    if (myLibrary[x].read === true) {
+        myLibrary[x].read = false;
+    } else {
+        myLibrary[x].read = true;
+    }
+    readStatus.textContent = hasRead(myLibrary[x].read);
+}
+
+function formSubmit () {
+    const BkTitle = document.querySelector('#book_title');
+    const BkAuthor = document.querySelector('#book_author');
+    const BkPgs = document.querySelector('#book_pages');
+    const BkRd = document.getElementsByName('yetread');
+    let y;
+    console.log(BkRd);
+    if (BkRd[0].checked === true) {
+        y = true;
+    } else {
+        y = false;
+    }
+    console.log(y);
+    removeAllBooks();
+    addBookToLibrary(BkTitle.value, BkAuthor.value, BkPgs.value, y);
+    displayBooks();
+}
 
 const containerDiv = document.querySelector('.container');
+const submitBtn = document.querySelector('#submitform');
+const addBtn = document.querySelector('.formbutton');
+addBtn.addEventListener('click', () => {
+    const formEl = document.querySelector('.formdiv');
+    formEl.style.display = 'block';
+})
 console.log(myLibrary);
 addBookToLibrary("newnew", "new author", 69, false);
 displayBooks();
+
+submitBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+    formSubmit();
+});

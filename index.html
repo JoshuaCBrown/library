@@ -8,9 +8,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="bigcontainer">
+        <div class="container">
+        </div>
+        <div class="buttondiv">
+            <button class="formbutton">Add Book</button>
+        </div>
+        <div class="formdiv">
+            <form>
+                <label for="book_title">Title:</label>
+                <input type="text" id="book_title" name="book_title">
+                <label for="book_author">Author:</label>
+                <input type="text" id="book_author" name="book_author">
+                <label for="book_pages">Length in Pages:</label>
+                <input type="number" id="book_pages" name="book_pages">
+                <fieldset>
+                    <legend>Have you read it?</legend>
+                <div>
+                    <input type="radio" id="read_book" name="yetread" value=true>
+                    <label for="read_book">Yes</label>
+                  </div>
+              
+                  <div>
+                    <input type="radio" id="unread_book" name="yetread" value=false>
+                    <label for="unread_book">No</label>
+                  </div>
+              </fieldset>
+              
+                <input type="submit" id="submitform">
+            </form>
+        </div>
     </div>
-    
     <script src="jscript.js"></script>
 </body>
 </html>
