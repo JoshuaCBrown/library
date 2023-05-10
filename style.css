@@ -1,0 +1,47 @@
+:root {
+    font-size: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgba(37, 37, 56, 0.986)
+}
+
+.bigcontainer {
+    margin: auto 100px;
+}
+
+.container {
+
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+button {
+    margin: .2rem;
+}
+
+.card {
+    background: linear-gradient(green, blue);
+    border: 2px gray solid;
+    border-radius: 1.5em;
+    padding: .5em;
+    display: grid;
+}
+
+.btnDiv {
+    place-self: center;
+    
+}
+
+#read-or-not {
+    font-style: italic;
+}
+
+form {
+    color: white;
+    display: grid;
+    width: 200px;
+}
+
+#submitform {
+    margin: 1em;
+}

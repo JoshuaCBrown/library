@@ -27,6 +27,7 @@ function hasRead (x) {
 function displayBooks() {
     for (let i = 0; i < myLibrary.length; ++i) {
         const card = document.createElement('div');
+        card.className = 'card';
         card.id = 'cardid' + i;
         const cardTitle = document.createElement('p');
         const cardAuthor = document.createElement('p');
@@ -36,28 +37,32 @@ function displayBooks() {
         cardAuthor.className = 'authorfield';
         cardPages.className = 'pagesfield';
         cardRead.className = 'readfield' + i;
+        cardRead.id = 'read-or-not';
         card.appendChild(cardTitle);
         card.appendChild(cardAuthor);
         card.appendChild(cardPages);
         card.appendChild(cardRead);
-        cardTitle.textContent = myLibrary[i].title;
-        cardAuthor.textContent = myLibrary[i].author;
-        cardPages.textContent = myLibrary[i].pages;
-        cardRead.textContent = hasRead(myLibrary[i].read);
+        cardTitle.textContent = 'Title: ' + myLibrary[i].title;
+        cardAuthor.textContent = 'Author: ' + myLibrary[i].author;
+        cardPages.textContent = 'Pages: ' + myLibrary[i].pages;
+        cardRead.textContent = '*' + hasRead(myLibrary[i].read) + '*';
+        const btnDiv = document.createElement('div');
+        btnDiv.className = 'btnDiv';
         const removeButton = document.createElement('button');
         removeButton.className = 'removeBtn' + i;
         removeButton.textContent = 'Remove';
         removeButton.addEventListener('click', () => {
             removeBook(i);
         });
-        card.appendChild(removeButton);
+        btnDiv.appendChild(removeButton);
         const toggleBtn = document.createElement('button');
         toggleBtn.className = 'toggleBtn' + i;
         toggleBtn.textContent = 'Read/Unread';
         toggleBtn.addEventListener('click', () => {
             toggleRead(i);
         })
-        card.appendChild(toggleBtn);
+        btnDiv.appendChild(toggleBtn);
+        card.appendChild(btnDiv);
         containerDiv.appendChild(card);
     }
     // containerDiv.addEventListener ('click', function(e) {
