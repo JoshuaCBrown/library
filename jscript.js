@@ -47,14 +47,7 @@ function displayBooks() {
         cardPages.textContent = 'Pages: ' + myLibrary[i].pages;
         cardRead.textContent = '*' + hasRead(myLibrary[i].read) + '*';
         const btnDiv = document.createElement('div');
-        btnDiv.className = 'btnDiv';
-        const removeButton = document.createElement('button');
-        removeButton.className = 'removeBtn' + i;
-        removeButton.textContent = 'Remove';
-        removeButton.addEventListener('click', () => {
-            removeBook(i);
-        });
-        btnDiv.appendChild(removeButton);
+        btnDiv.className = 'btndiv';
         const toggleBtn = document.createElement('button');
         toggleBtn.className = 'toggleBtn' + i;
         toggleBtn.textContent = 'Read/Unread';
@@ -62,6 +55,14 @@ function displayBooks() {
             toggleRead(i);
         })
         btnDiv.appendChild(toggleBtn);
+        
+        const removeButton = document.createElement('button');
+        removeButton.className = 'removeBtn' + i;
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', () => {
+            removeBook(i);
+        });
+        btnDiv.appendChild(removeButton);
         card.appendChild(btnDiv);
         containerDiv.appendChild(card);
     }
@@ -122,15 +123,18 @@ function formSubmit () {
     removeAllBooks();
     addBookToLibrary(BkTitle.value, BkAuthor.value, BkPgs.value, y);
     displayBooks();
+    formEl.style.display = 'none';
+    formItself.reset();
 }
 
 const containerDiv = document.querySelector('.container');
 const submitBtn = document.querySelector('#submitform');
 const addBtn = document.querySelector('.formbutton');
+const formEl = document.querySelector('.formdiv');
+const formItself = document.querySelector('form');
 addBtn.addEventListener('click', () => {
-    const formEl = document.querySelector('.formdiv');
     formEl.style.display = 'block';
-})
+});
 console.log(myLibrary);
 addBookToLibrary("newnew", "new author", 69, false);
 displayBooks();

@@ -1,35 +1,93 @@
 :root {
     font-size: 20px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: rgba(37, 37, 56, 0.986)
+    background: radial-gradient(rgba(135, 207, 235, 0.37), white);
+    box-sizing: border-box;
 }
 
 .bigcontainer {
-    margin: auto 100px;
+    margin: auto 15%;
+}
+
+.header {
+    margin-top: 1rem;
+    display: grid;
+    justify-items: center;
+    border-bottom: 0rem solid black;
+    box-shadow: 0 0rem 1rem;
+    background: white;
+    position: fixed;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.title {
+    margin: .5rem 0 0 0;
+}
+
+.info {
+    margin: .5rem 0 2rem 0;
+    font-size: 1rem;
+}
+
+.buttondiv {
+    display: grid;
+    justify-items: center;
+    margin-bottom: 1rem;
+}
+
+.buttondiv > button {
+    font-size: 1rem;
+    background-color: rgb(90, 91, 199);
+    height: 2rem;
+    margin: .2rem;
+    border: none;
+    border-radius: .5rem;
+    width: 10rem;
+    color: white;
+    font-weight: bold;
 }
 
 .container {
-
+    margin-top: 15rem;
     display: grid;
-    grid-gap: 10px;
+    grid-gap: .8rem;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
-button {
-    margin: .2rem;
-}
-
 .card {
-    background: linear-gradient(green, blue);
-    border: 2px gray solid;
+    background: linear-gradient(to right, rgba(248, 220, 197, 0.501), rgb(255, 255, 255));
+    border: 2px solid lightslategray;
     border-radius: 1.5em;
     padding: .5em;
     display: grid;
+    box-shadow: 0 0 0rem;
 }
 
-.btnDiv {
-    place-self: center;
-    
+.btndiv>button {
+    margin: .2rem;
+    border: none;
+    width: 10rem;
+    height: 1.2rem;
+    background: darkblue;
+    color: white;
+    font-weight: bold;
+    font-size: .7rem;
+}
+
+.btndiv>:nth-child(2) {
+    background: rgb(75, 8, 8);
+    border-radius: 0;
+}
+
+.btndiv {
+    display: grid;
+    justify-items: center;
+    height: 4rem;
+    position: relative;
+    margin-bottom: 0;
 }
 
 #read-or-not {
@@ -37,11 +95,55 @@ button {
 }
 
 form {
-    color: white;
+    color: black;
+    gap: .5rem;
     display: grid;
-    width: 200px;
+    width: 250px;
+    font-weight: bold;
+}
+
+label[for="unread_book"],
+label[for="read_book"] {
+    font-weight: normal;
+}
+
+legend {
+    text-align: center;
+}
+
+.formdiv {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    
+
+}
+
+.formwrapper {
+    background: white;
+    position: relative;
+    display: grid;
+    justify-items: center;
+    width: 250px;
+    margin: 0 auto;
+    margin-top: 10rem;
+    padding: 20px;
+    border-radius: 1rem;
+    box-shadow: 0 0 2rem;
 }
 
 #submitform {
     margin: 1em;
+    border: none;
+    height: 2rem;
+    background-color: rgb(90, 91, 199);
+    border-radius: .5rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
 }
+
